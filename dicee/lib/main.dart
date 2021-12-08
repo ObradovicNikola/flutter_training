@@ -9,14 +9,21 @@ void main() {
           title: const Text('Dicee'),
           backgroundColor: Colors.red,
         ),
-        body: const DicePage(),
+        body: DicePage(),
       ),
     ),
   );
 }
 
-class DicePage extends StatelessWidget {
+class DicePage extends StatefulWidget {
   const DicePage({Key? key}) : super(key: key);
+
+  @override
+  _DicePageState createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
+  var leftDiceNumber = 3;
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +32,27 @@ class DicePage extends StatelessWidget {
         children: [
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Image.asset('images/dice3.png'),
+              padding: const EdgeInsets.all(8.0),
+              child: TextButton(
+                onPressed: () {
+                  setState(() {
+                    leftDiceNumber = 5;
+                  });
+                  print('Left button pressed');
+                },
+                child: Image.asset('images/dice$leftDiceNumber.png'),
+              ),
             ),
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Image.asset('images/dice2.png'),
+              padding: const EdgeInsets.all(8.0),
+              child: TextButton(
+                onPressed: () {
+                  print('Right button');
+                },
+                child: Image.asset('images/dice2.png'),
+              ),
             ),
           ),
         ],
