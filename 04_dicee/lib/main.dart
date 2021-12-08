@@ -45,6 +45,14 @@ class _DicePageState extends State<DicePage> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextButton(
+                style: ButtonStyle(
+                  overlayColor: MaterialStateProperty.resolveWith<Color>(
+                      (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.pressed))
+                      return Colors.orange;
+                    return Colors.black; // Defer to the widget's default.
+                  }),
+                ),
                 onPressed: () {
                   rollDice();
                 },
@@ -56,6 +64,14 @@ class _DicePageState extends State<DicePage> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextButton(
+                style: ButtonStyle(
+                  overlayColor: MaterialStateProperty.resolveWith<Color>(
+                      (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.pressed))
+                      return Colors.orange;
+                    return Colors.black; // Defer to the widget's default.
+                  }),
+                ),
                 onPressed: () {
                   rollDice();
                 },
